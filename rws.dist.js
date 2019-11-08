@@ -110,7 +110,7 @@ RWS = function (_EventEmitter) {(0, _inherits3.default)(RWS, _EventEmitter);
           _this2.readyState = WebSocket.CLOSED;
           _this2.emit('close');
         } else {
-          if (!_this2.reconnectAttempts && !_this2.timeout) {
+          if (!_this2.reconnectAttempts && !_this2.timedOut) {
             _this2.dbg('RWS', 'onclose', _this2.url);
             _this2.emit('close');
           }
