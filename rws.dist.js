@@ -1,8 +1,7 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _keys = require('babel-runtime/core-js/object/keys');var _keys2 = _interopRequireDefault(_keys);var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);var _createClass2 = require('babel-runtime/helpers/createClass');var _createClass3 = _interopRequireDefault(_createClass2);var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);var _inherits2 = require('babel-runtime/helpers/inherits');var _inherits3 = _interopRequireDefault(_inherits2);var _events = require('events');var _events2 = _interopRequireDefault(_events);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });var _getIterator2 = require('babel-runtime/core-js/get-iterator');var _getIterator3 = _interopRequireDefault(_getIterator2);var _keys = require('babel-runtime/core-js/object/keys');var _keys2 = _interopRequireDefault(_keys);var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);var _createClass2 = require('babel-runtime/helpers/createClass');var _createClass3 = _interopRequireDefault(_createClass2);var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);var _inherits2 = require('babel-runtime/helpers/inherits');var _inherits3 = _interopRequireDefault(_inherits2);var _events = require('events');var _events2 = _interopRequireDefault(_events);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var
 
 RWS = function (_EventEmitter) {(0, _inherits3.default)(RWS, _EventEmitter);
   function RWS(url) {var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};var protocols = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];(0, _classCallCheck3.default)(this, RWS);var _this = (0, _possibleConstructorReturn3.default)(this, (RWS.__proto__ || (0, _getPrototypeOf2.default)(RWS)).call(this));
-
 
     var settings = {
       debug: false,
@@ -16,10 +15,10 @@ RWS = function (_EventEmitter) {(0, _inherits3.default)(RWS, _EventEmitter);
 
     _this.url = url;
     _this.protocols = protocols;
-
-    (0, _keys2.default)(settings).forEach(function (setting) {
-      _this[setting] = setting in options ? options[setting] : settings[setting];
-    });
+    var settingsKeys = (0, _keys2.default)(settings);var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
+      for (var _iterator = (0, _getIterator3.default)(settingsKeys), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var setting = _step.value;
+        _this[setting] = setting in options ? options[setting] : settings[setting];
+      }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
 
     _this.ws = null;
     _this.forcedClose = false;
@@ -29,10 +28,10 @@ RWS = function (_EventEmitter) {(0, _inherits3.default)(RWS, _EventEmitter);
     _this.protocol = null;
 
     // Initialize callbacks
-    var handlers = ['onconnecting', 'onopen', 'onclose', 'onmessage', 'onerror'];
-    handlers.forEach(function (handler) {
-      _this[handler] = function (event) {return event;};
-    });
+    var handlers = ['onconnecting', 'onopen', 'onclose', 'onmessage', 'onerror'];var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
+      for (var _iterator2 = (0, _getIterator3.default)(handlers), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var handler = _step2.value;
+        _this[handler] = function (event) {return event;};
+      }} catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return) {_iterator2.return();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}
 
     _this.on('connecting', function (event) {
       _this.onconnecting(event);
@@ -108,11 +107,11 @@ RWS = function (_EventEmitter) {(0, _inherits3.default)(RWS, _EventEmitter);
         _this2.ws = null;
         if (_this2.forcedClose) {
           _this2.readyState = WebSocket.CLOSED;
-          _this2.emit('close');
+          _this2.emit('close', event);
         } else {
           if (!_this2.reconnectAttempts && !_this2.timedOut) {
             _this2.dbg('RWS', 'onclose', _this2.url);
-            _this2.emit('close');
+            _this2.emit('close', event);
           }
           event.isReconnect = true;
           _this2.emit('connecting', event);
