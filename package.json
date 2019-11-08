@@ -1,6 +1,6 @@
 {
-  "name": "es6-rws",
-  "version": "1.0.2",
+  "name": "es6-rws-2",
+  "version": "0.0.1",
   "description": "ES6 Implementation of ReconnectingWebsocket",
   "main": "rws.dist.js",
   "scripts": {
@@ -39,19 +39,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/voidabhi/es6-rws.git"
+    "url": "git+https://github.com/wheelere/es6-rws-2.git"
   },
   "keywords": [
     "websocket",
     "reconnecting",
     "es6"
   ],
-  "author": "Abhijeet Mohan <void.aby@gmail.com>",
+  "author": "Earnest Wheeler <earnestw@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/voidabhi/es6-rws/issues"
+    "url": "https://github.com/wheelere/es6-rws-2/issues"
   },
-  "homepage": "https://github.com/voidabhi/es6-rws#README.md",
+  "homepage": "https://github.com/wheelere/es6-rws-2#README.md",
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-eslint": "^6.1.0",
