@@ -1,10 +1,10 @@
-## es6-rws
-ES6 Implementation of ReconnectingWebsocket with EventEmitter interface
+## es6-rws-2
+ES6 Implementation of ReconnectingWebsocket with EventEmitter interface based on voidabhi's [es6-rws](https://github.com/voidabhi/es6-rws).
 
 ### Example
 
 ```js
-import RWS from 'es6-rws';
+import RWS from 'es6-rws-2';
 
 let rws = new RWS('ws://localhost:8080', 'json', {debug: true})
 ```
@@ -21,7 +21,7 @@ $ npm run build:browserify
 ```
 MIT License
 
-Copyright (c) 2016
+Copyright (c) 2019
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
